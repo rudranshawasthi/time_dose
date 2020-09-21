@@ -1,17 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:time_dose/models/Drug.dart';
+import 'package:time_dose/services/drug_notification.dart';
 import 'package:time_dose/services/saveLocal.dart';
-import 'package:time_dose/services/notifications.dart';
 
 class DrugData extends ChangeNotifier {
   List<Drug> drugList;
 
   SaveLocal saveLocal = SaveLocal();
-  NotificationPlugin notificationPlugin = NotificationPlugin();
+  DrugNotification drugNotification;
 
   DrugData() {
     initializeDrugList();
-    notificationPlugin.setOnNotificationClick();
+    drugNotification = DrugNotification();
   }
 
   Future<void> initializeDrugList() async {
@@ -22,7 +22,7 @@ class DrugData extends ChangeNotifier {
 
   void addDrug(Drug newDrug) async {
     drugList.add(newDrug);
-    await notificationPlugin.showNotification();
+    drugNotification.addDrugNotification(newDrug);
     saveLocal.saveData(drugList);
     notifyListeners();
   }
