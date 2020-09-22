@@ -5,6 +5,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 class NotificationPlugin {
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
   var initializationSettings;
+
   NotificationPlugin() {
     init();
   }
@@ -56,12 +57,12 @@ class NotificationPlugin {
         payload: 'New Payload');
   }
 
-  Future<void> morningNotification(String name) async {
-    var time = Time(3, 00, 00);
+  Future<void> morningNotification(String name, int id) async {
+    var time = Time(18, 25, 00);
     var androidChannelSpecifics = AndroidNotificationDetails(
-      'CHANNEL_ID_MORNING_$name',
-      'CHANNEL_MORNING_$name',
-      "CHANNEL_DESCRIPTION_MORNING_$name",
+      'CHANNEL_ID_MORNING',
+      'CHANNEL_MORNING',
+      "CHANNEL_DESCRIPTION_MORNING",
       importance: Importance.Max,
       priority: Priority.High,
     );
@@ -69,21 +70,21 @@ class NotificationPlugin {
     var platformChannelSpecifics =
         NotificationDetails(androidChannelSpecifics, iosChannelSpecifics);
     await flutterLocalNotificationsPlugin.showDailyAtTime(
-      0,
+      id,
       'Test Title at ${time.hour}:${time.minute}.${time.second}',
-      'Test Body_$name', //null
+      'Test Body_$name Morning', //null
       time,
       platformChannelSpecifics,
       payload: 'Test Payload',
     );
   }
 
-  Future<void> afternoonNotification(String name) async {
-    var time = Time(14, 0, 0);
+  Future<void> afternoonNotification(String name, int id) async {
+    var time = Time(18, 26, 00);
     var androidChannelSpecifics = AndroidNotificationDetails(
-      'CHANNEL_ID_AFTERNOON_$name',
-      'CHANNEL_AFTERNOON_$name',
-      "CHANNEL_DESCRIPTION_AFTERNOON_$name",
+      'CHANNEL_ID_AFTERNOON',
+      'CHANNEL_AFTERNOON',
+      "CHANNEL_DESCRIPTION_AFTERNOON",
       importance: Importance.Max,
       priority: Priority.High,
     );
@@ -91,21 +92,21 @@ class NotificationPlugin {
     var platformChannelSpecifics =
         NotificationDetails(androidChannelSpecifics, iosChannelSpecifics);
     await flutterLocalNotificationsPlugin.showDailyAtTime(
-      0,
+      id,
       'Test Title at ${time.hour}:${time.minute}.${time.second}',
-      'Test Body_$name', //null
+      'Test Body_$name afternoon', //null
       time,
       platformChannelSpecifics,
       payload: 'Test Payload',
     );
   }
 
-  Future<void> eveningNotification(String name) async {
-    var time = Time(19, 0, 0);
+  Future<void> eveningNotification(String name, int id) async {
+    var time = Time(18, 27, 00);
     var androidChannelSpecifics = AndroidNotificationDetails(
-      'CHANNEL_ID_EVENING_$name',
-      'CHANNEL_NAME_EVENING_$name',
-      "CHANNEL_DESCRIPTION_EVENING_$name",
+      'CHANNEL_ID_EVENING',
+      'CHANNEL_NAME_EVENING',
+      "CHANNEL_DESCRIPTION_EVENING",
       importance: Importance.Max,
       priority: Priority.High,
     );
@@ -113,21 +114,21 @@ class NotificationPlugin {
     var platformChannelSpecifics =
         NotificationDetails(androidChannelSpecifics, iosChannelSpecifics);
     await flutterLocalNotificationsPlugin.showDailyAtTime(
-      0,
+      id,
       'Test Title at ${time.hour}:${time.minute}.${time.second}',
-      'Test Body_$name', //null
+      'Test Body_$name evening', //null
       time,
       platformChannelSpecifics,
       payload: 'Test Payload',
     );
   }
 
-  Future<void> nightNotification(String name) async {
-    var time = Time(22, 0, 0);
+  Future<void> nightNotification(String name, int id) async {
+    var time = Time(18, 28, 0);
     var androidChannelSpecifics = AndroidNotificationDetails(
-      'CHANNEL_ID_NIGHT_$name',
-      'CHANNEL_NAME_NIGHT_$name',
-      "CHANNEL_DESCRIPTION_NIGHT_$name",
+      'CHANNEL_ID_NIGHT',
+      'CHANNEL_NAME_NIGHT',
+      "CHANNEL_DESCRIPTION_NIGHT",
       importance: Importance.Max,
       priority: Priority.High,
     );
@@ -135,7 +136,7 @@ class NotificationPlugin {
     var platformChannelSpecifics =
         NotificationDetails(androidChannelSpecifics, iosChannelSpecifics);
     await flutterLocalNotificationsPlugin.showDailyAtTime(
-      0,
+      id,
       'Test Title at ${time.hour}:${time.minute}.${time.second}',
       'Test Body_$name', //null
       time,
@@ -148,5 +149,13 @@ class NotificationPlugin {
     List<PendingNotificationRequest> p =
         await flutterLocalNotificationsPlugin.pendingNotificationRequests();
     return p.length;
+  }
+
+  Future<void> cancelNotification(int id) async {
+    await flutterLocalNotificationsPlugin.cancel(id);
+  }
+
+  Future<void> cancelAllNotification() async {
+    await flutterLocalNotificationsPlugin.cancelAll();
   }
 }

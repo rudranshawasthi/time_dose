@@ -12,6 +12,7 @@ class DrugData extends ChangeNotifier {
   DrugData() {
     initializeDrugList();
     drugNotification = DrugNotification();
+    drugNotification.cancleall();
   }
 
   Future<void> initializeDrugList() async {
@@ -21,8 +22,8 @@ class DrugData extends ChangeNotifier {
   }
 
   void addDrug(Drug newDrug) async {
+    drugNotification.addDrugNotification(newDrug, drugCount() * 4);
     drugList.add(newDrug);
-    drugNotification.addDrugNotification(newDrug);
     saveLocal.saveData(drugList);
     notifyListeners();
   }
@@ -32,6 +33,7 @@ class DrugData extends ChangeNotifier {
   }
 
   void deleteDrug(Drug drug) {
+    drugNotification.cancelDrugNotification(drug, drugList.indexOf(drug));
     drugList.remove(drug);
     saveLocal.saveData(drugList);
     notifyListeners();
