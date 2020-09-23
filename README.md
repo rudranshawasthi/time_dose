@@ -9,10 +9,6 @@ Tick the time when you gotta take them and youll get notified about them.
 
 # Wanna have a look
 
-![alt text](https://github.com/rudranshawasthi/time_dose/blob/master/readmeImages/first.png) 
+![alt text](https://github.com/rudranshawasthi/time_dose/blob/master/readmeImages/first.png) ![alt text](https://github.com/rudranshawasthi/time_dose/blob/master/readmeImages/second.png)
 
-![alt text](https://github.com/rudranshawasthi/time_dose/blob/master/readmeImages/second.png)
-
-![alt text](https://github.com/rudranshawasthi/time_dose/blob/master/readmeImages/third.PNG)
-
-![alt text](https://github.com/rudranshawasthi/time_dose/blob/master/readmeImages/fourth.png)
+![alt text](https://github.com/rudranshawasthi/time_dose/blob/master/readmeImages/third.PNG) ![alt text](https://github.com/rudranshawasthi/time_dose/blob/master/readmeImages/fourth.png)
