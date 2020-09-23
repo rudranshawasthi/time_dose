@@ -26,9 +26,9 @@ class _AddDrugScreenState extends State<AddDrugScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'New Med',
+              'New Dose',
               style: TextStyle(
-                color: Colors.grey[300],
+                color: Colors.lightBlue[300],
                 fontSize: 30,
               ),
               textAlign: TextAlign.center,
