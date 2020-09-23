@@ -5,13 +5,15 @@ class Drug {
   bool afternoon;
   bool evening;
   bool night;
+  int notifId;
 
   Drug.fromMap(Map map)
       : this.name = map['name'],
         this.morning = map['morning'],
         this.afternoon = map['afternoon'],
         this.evening = map['evening'],
-        this.night = map['night'];
+        this.night = map['night'],
+        this.notifId = map['notifIdList'];
 
   Map toMap() {
     return {
@@ -20,6 +22,7 @@ class Drug {
       'afternoon': this.afternoon,
       'evening': this.evening,
       'night': this.night,
+      'notifIdList': this.notifId,
     };
   }
 

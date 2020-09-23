@@ -58,7 +58,7 @@ class NotificationPlugin {
   }
 
   Future<void> morningNotification(String name, int id) async {
-    var time = Time(18, 25, 00);
+    var time = Time(8, 0, 0);
     var androidChannelSpecifics = AndroidNotificationDetails(
       'CHANNEL_ID_MORNING',
       'CHANNEL_MORNING',
@@ -80,7 +80,7 @@ class NotificationPlugin {
   }
 
   Future<void> afternoonNotification(String name, int id) async {
-    var time = Time(18, 26, 00);
+    var time = Time(12, 0, 0);
     var androidChannelSpecifics = AndroidNotificationDetails(
       'CHANNEL_ID_AFTERNOON',
       'CHANNEL_AFTERNOON',
@@ -102,7 +102,7 @@ class NotificationPlugin {
   }
 
   Future<void> eveningNotification(String name, int id) async {
-    var time = Time(18, 27, 00);
+    var time = Time(16, 0, 0);
     var androidChannelSpecifics = AndroidNotificationDetails(
       'CHANNEL_ID_EVENING',
       'CHANNEL_NAME_EVENING',
@@ -124,7 +124,7 @@ class NotificationPlugin {
   }
 
   Future<void> nightNotification(String name, int id) async {
-    var time = Time(18, 28, 0);
+    var time = Time(20, 0, 0);
     var androidChannelSpecifics = AndroidNotificationDetails(
       'CHANNEL_ID_NIGHT',
       'CHANNEL_NAME_NIGHT',

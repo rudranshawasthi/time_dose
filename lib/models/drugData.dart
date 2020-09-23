@@ -5,6 +5,7 @@ import 'package:time_dose/services/saveLocal.dart';
 
 class DrugData extends ChangeNotifier {
   List<Drug> drugList;
+  int count;
 
   SaveLocal saveLocal = SaveLocal();
   DrugNotification drugNotification;
@@ -12,19 +13,27 @@ class DrugData extends ChangeNotifier {
   DrugData() {
     initializeDrugList();
     drugNotification = DrugNotification();
-    drugNotification.cancleall();
   }
 
   Future<void> initializeDrugList() async {
     await saveLocal.initSharedPreferences();
+    drugNotification.pendingNotif();
     drugList = saveLocal.loadData();
+    if (drugList.length == 0) {
+      count = 0;
+    } else {
+      count = saveLocal.loadCount();
+    }
     notifyListeners();
   }
 
   void addDrug(Drug newDrug) async {
-    drugNotification.addDrugNotification(newDrug, drugCount() * 4);
+    count += 4;
+    newDrug.notifId = count;
+    drugNotification.addDrugNotification(newDrug);
     drugList.add(newDrug);
     saveLocal.saveData(drugList);
+    saveLocal.saveCount(count);
     notifyListeners();
   }
 
@@ -33,7 +42,7 @@ class DrugData extends ChangeNotifier {
   }
 
   void deleteDrug(Drug drug) {
-    drugNotification.cancelDrugNotification(drug, drugList.indexOf(drug));
+    drugNotification.cancelDrugNotification(drug);
     drugList.remove(drug);
     saveLocal.saveData(drugList);
     notifyListeners();

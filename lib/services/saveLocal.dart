@@ -24,4 +24,13 @@ class SaveLocal {
     }
     return drugList;
   }
+
+  void saveCount(int count) {
+    sharedPreferences.setInt('count', count);
+  }
+
+  int loadCount() {
+    int count = sharedPreferences.getInt('count');
+    return count ?? 0;
+  }
 }

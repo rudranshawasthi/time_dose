@@ -9,7 +9,8 @@ class DrugNotification {
     notificationPlugin.setOnNotificationClick();
   }
 
-  void addDrugNotification(Drug drug, int index) async {
+  void addDrugNotification(Drug drug) async {
+    int index = drug.notifId;
     if (drug.morning)
       notificationPlugin.morningNotification(drug.name, index++);
     if (drug.afternoon)
@@ -22,18 +23,17 @@ class DrugNotification {
     print(p);
   }
 
-  void cancelDrugNotification(Drug drug, int index) async {
+  void cancelDrugNotification(Drug drug) async {
+    int index = drug.notifId;
     print(await notificationPlugin.getPendingNotificationCount());
     if (drug.morning) notificationPlugin.cancelNotification(index++);
     if (drug.afternoon) notificationPlugin.cancelNotification(index++);
     if (drug.evening) notificationPlugin.cancelNotification(index++);
-    if (drug.night) notificationPlugin.cancelNotification(index++);
+    if (drug.night) notificationPlugin.cancelNotification(index);
     print(await notificationPlugin.getPendingNotificationCount());
   }
 
-  void cancleall() async {
-    print(await notificationPlugin.getPendingNotificationCount());
-    notificationPlugin.cancelAllNotification();
+  void pendingNotif() async {
     print(await notificationPlugin.getPendingNotificationCount());
   }
 }
