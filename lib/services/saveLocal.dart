@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:time_dose/models/Drug.dart';
 
@@ -18,10 +17,20 @@ class SaveLocal {
 
   List<Drug> loadData() {
     List<String> listString = sharedPreferences.getStringList('list');
+    List<Drug> drugList = [];
     if (listString != null) {
-      List<Drug> drugList =
+      drugList =
           listString.map((item) => Drug.fromMap(json.decode(item))).toList();
-      return drugList;
     }
+    return drugList;
+  }
+
+  void saveCount(int count) {
+    sharedPreferences.setInt('count', count);
+  }
+
+  int loadCount() {
+    int count = sharedPreferences.getInt('count');
+    return count ?? 0;
   }
 }
