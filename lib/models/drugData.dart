@@ -17,7 +17,6 @@ class DrugData extends ChangeNotifier {
 
   Future<void> initializeDrugList() async {
     await saveLocal.initSharedPreferences();
-    drugNotification.pendingNotif();
     drugList = saveLocal.loadData();
     if (drugList.length == 0) {
       count = 0;

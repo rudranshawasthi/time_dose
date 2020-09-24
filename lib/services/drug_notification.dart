@@ -18,22 +18,13 @@ class DrugNotification {
     if (drug.evening)
       notificationPlugin.eveningNotification(drug.name, index++);
     if (drug.night) notificationPlugin.nightNotification(drug.name, index++);
-    print('pending');
-    int p = await notificationPlugin.getPendingNotificationCount();
-    print(p);
   }
 
   void cancelDrugNotification(Drug drug) async {
     int index = drug.notifId;
-    print(await notificationPlugin.getPendingNotificationCount());
     if (drug.morning) notificationPlugin.cancelNotification(index++);
     if (drug.afternoon) notificationPlugin.cancelNotification(index++);
     if (drug.evening) notificationPlugin.cancelNotification(index++);
     if (drug.night) notificationPlugin.cancelNotification(index);
-    print(await notificationPlugin.getPendingNotificationCount());
-  }
-
-  void pendingNotif() async {
-    print(await notificationPlugin.getPendingNotificationCount());
   }
 }
