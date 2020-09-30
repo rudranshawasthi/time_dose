@@ -71,8 +71,8 @@ class NotificationPlugin {
         NotificationDetails(androidChannelSpecifics, iosChannelSpecifics);
     await flutterLocalNotificationsPlugin.showDailyAtTime(
       id,
-      'Test Title at ${time.hour}:${time.minute}.${time.second}',
-      'Test Body_$name Morning', //null
+      '$name Dose Time',
+      'Hey you gotta take $name dose', //null
       time,
       platformChannelSpecifics,
       payload: 'Test Payload',
@@ -93,8 +93,8 @@ class NotificationPlugin {
         NotificationDetails(androidChannelSpecifics, iosChannelSpecifics);
     await flutterLocalNotificationsPlugin.showDailyAtTime(
       id,
-      'Test Title at ${time.hour}:${time.minute}.${time.second}',
-      'Test Body_$name afternoon', //null
+      '$name Dose Time',
+      'Hey you gotta take $name dose', //null
       time,
       platformChannelSpecifics,
       payload: 'Test Payload',
@@ -115,8 +115,8 @@ class NotificationPlugin {
         NotificationDetails(androidChannelSpecifics, iosChannelSpecifics);
     await flutterLocalNotificationsPlugin.showDailyAtTime(
       id,
-      'Test Title at ${time.hour}:${time.minute}.${time.second}',
-      'Test Body_$name evening', //null
+      '$name Dose Time',
+      'Hey you gotta take $name dose', //null
       time,
       platformChannelSpecifics,
       payload: 'Test Payload',
@@ -137,8 +137,8 @@ class NotificationPlugin {
         NotificationDetails(androidChannelSpecifics, iosChannelSpecifics);
     await flutterLocalNotificationsPlugin.showDailyAtTime(
       id,
-      'Test Title at ${time.hour}:${time.minute}.${time.second}',
-      'Test Body_$name', //null
+      '$name Dose Time',
+      'Hey you gotta take $name dose', //null
       time,
       platformChannelSpecifics,
       payload: 'Test Payload',
